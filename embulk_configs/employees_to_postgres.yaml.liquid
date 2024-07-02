@@ -1,0 +1,48 @@
+in:
+  type: file
+  path_prefix: {{ env.IN_PATH_PREFIX }}
+  file_ext: csv
+  parser:
+    charset: UTF-8
+    newline: CRLF
+    type: csv
+    delimiter: ','
+    quote: '"'
+    escape: '"'
+    null_string: 'NULL'
+    skip_header_lines: 1
+    columns: 
+    - {name: employee_id, type: string} 
+    - {name: last_name, type: string}
+    - {name: first_name, type: string}
+    - {name: title, type: string}
+    - {name: title_of_courtesy, type: string} 
+    - {name: birth_date, type: string}
+    - {name: hire_date, type: string}
+    - {name: address, type: string}
+    - {name: city, type: string} 
+    - {name: region, type: string}
+    - {name: postal_code, type: string}
+    - {name: country, type: string}
+    - {name: home_phone, type: string} 
+    - {name: extension, type: string}
+    - {name: photo, type: string}
+    - {name: notes, type: string}
+    - {name: reports_to, type: string} 
+    - {name: photo_path, type: string}
+  
+out:
+  type: postgresql
+  host: {{ env.HOST }}
+  user: {{ env.USER }}
+  password: {{ env.PASSWORD }}
+  database: {{ env.DATABASE }}
+  table: {{ env.TABLE }}
+  port: {{ env.PORT}}
+  mode: replace
+  column_options:
+    picture: 
+      value_type: string
+    photo:
+      value_type: string
+  

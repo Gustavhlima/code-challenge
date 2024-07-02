@@ -1,0 +1,26 @@
+in:
+  type: file
+  path_prefix: {{ env.IN_PATH_PREFIX }}
+  parser:
+    charset: UTF-8
+    newline: CRLF
+    type: csv
+    delimiter: ','
+    quote: '"'
+    escape: '"'
+    null_string: 'NULL'
+    skip_header_lines: 1
+    columns: 
+    - {name: order_id, type: string} 
+    - {name: product_id, type: string}
+    - {name: unit_price, type: string}
+    - {name: quantity, type: string}
+    - {name: discount, type: string}
+out:
+  type: file
+  path_prefix: {{ env.OUT_PATH_PREFIX }}
+  file_ext: csv
+  formatter:
+    type: csv
+exec:
+  min_output_tasks: 1

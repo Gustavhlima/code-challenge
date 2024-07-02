@@ -1,0 +1,44 @@
+in:
+  type: file
+  path_prefix: {{ env.IN_PATH_PREFIX }}
+  file_ext: csv
+  parser:
+    charset: UTF-8
+    newline: CRLF
+    type: csv
+    delimiter: ','
+    quote: '"'
+    escape: '"'
+    null_string: 'NULL'
+    skip_header_lines: 1
+    columns: 
+    - {name: order_id, type: string} 
+    - {name: customer_id, type: string}
+    - {name: employee_id, type: string}
+    - {name: order_date, type: string}
+    - {name: required_date, type: string} 
+    - {name: shipped_date, type: string}
+    - {name: ship_via, type: string}
+    - {name: freight, type: string}
+    - {name: ship_name, type: string} 
+    - {name: ship_address, type: string}
+    - {name: ship_city, type: string}
+    - {name: ship_region, type: string}
+    - {name: ship_postal_code, type: string} 
+    - {name: ship_country, type: string}
+  
+out:
+  type: postgresql
+  host: {{ env.HOST }}
+  user: {{ env.USER }}
+  password: {{ env.PASSWORD }}
+  database: {{ env.DATABASE }}
+  table: {{ env.TABLE }}
+  port: {{ env.PORT}}
+  mode: replace
+  column_options:
+    picture: 
+      value_type: string
+    photo:
+      value_type: string
+  
