@@ -29,15 +29,18 @@ Antes de iniciar o projeto, foi necessário organizar o ambiente de trabalho par
 2. Para melhor utilização do Embulk, foi necessária a instalação do JDK 8.
 3. A ferramenta Airflow necessitou da utilização do ambiente Linux para operar. Dessa forma, o projeto foi todo desenvolvido utilizando WSL emulando Ubuntu no VSCode.
 4. Utilização do Docker para criação e gerenciamento de containers, possibilitando a realização das tarefas.
-5. Com todas as ferramentas instaladas e o ambiente de trabalho organizado e operando, iniciou-se a realização das tarefas exigidas no desafio.
-6. Clone deste repositório no VSCode, importando todos os arquivos necessários do projeto.
-7. Inicialização dos containers do Docker, criando os parâmetros necessários no docker-compose.yml.
-8. Instalação e inicialização do Airflow, usando o ambiente virtual do Python venv.
-9. Criação dos códigos usados nas duas DAGs criadas:
+5. A versão do Embulk utilizada foi a 0.9.25. Além disso, foram instaladas duas gems necessárias para os plugins do PostgreSQL:
+   - embulk-input-postgresql (0.13.2 java)
+   - embulk-output-postgresql (0.10.6 java)
+6. Com todas as ferramentas instaladas e o ambiente de trabalho organizado e operando, iniciou-se a realização das tarefas exigidas no desafio.
+7. Clone deste repositório no VSCode, importando todos os arquivos necessários do projeto.
+8. Inicialização dos containers do Docker, criando os parâmetros necessários no docker-compose.yml.
+9. Instalação e inicialização do Airflow, usando o ambiente virtual do Python venv.
+10. Criação dos códigos usados nas duas DAGs criadas:
    - Um código criando funções necessárias para a DAG principal.
    - A DAG principal que realiza todas as atribuições de ELT requeridas no desafio.
    - Uma DAG para rodar uma query após o fim do processo.
-10. Para a implementação de composição de endereços e data dinâmicos, foi utilizado o framework Liquid no Embulk.
+11. Para a implementação de composição de endereços e data dinâmicos, foi utilizado o framework Liquid no Embulk.
 
 ## Execução do Projeto
 
@@ -64,6 +67,7 @@ Para executar o projeto, siga as etapas abaixo:
 7. Acesse o Airflow no navegador:
    - Digite o seguinte endereço: localhost:8080
    - O Airflow irá pedir o login e senha que foram disponibilizados no terminal.
+8. Uma vez acessado o Airflow, a interface deve mostrar as seguintes DAGs.    
    - ![dags](docs/dags.jpg)
 8. A DAG `northwind_elt_dag` que realiza todas as atribuições de ELT deve executar automaticamente.
    - ![dags_exec](docs/dag_executada.jpg)
