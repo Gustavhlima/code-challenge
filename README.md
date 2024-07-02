@@ -1,5 +1,79 @@
 # Indicium Tech Code Challenge
 
+## Introdução
+
+Este repositório contém a solução para o desafio de código da Indicium Tech, focado em projetos de dados. O objetivo final é demonstrar o conhecimento técnico do candidato em construir uma pipeline dentro das especificações do desafio, incluindo a capacidade de executar uma consulta que mostra os pedidos e seus detalhes. 
+
+## Índice
+
+- Ferramentas Utilizadas
+- Etapas do Projeto
+- Execução do Projeto
+
+## Ferramentas Utilizadas
+
+As seguintes ferramentas foram usadas para resolver este desafio:
+
+- Scheduler: Airflow
+- Data Loader: Embulk (Java-based)
+- Database: PostgreSQL
+- JDK 8 (instalado via gerenciador de pacotes de aplicativos usando um JDK open source)
+- Docker
+- WSL emulando Ubuntu no VSCode
+
+## Etapas do Projeto
+
+Antes de iniciar o projeto, foi necessário organizar o ambiente de trabalho para o desafio:
+
+1. Baixar as ferramentas necessárias: Embulk, Airflow, PostgreSQL, JDK 8, Docker.
+2. Para melhor utilização do Embulk, foi necessária a instalação do JDK 8.
+3. A ferramenta Airflow necessitou da utilização do ambiente Linux para operar. Dessa forma, o projeto foi todo desenvolvido utilizando WSL emulando Ubuntu no VSCode.
+4. Utilização do Docker para criação e gerenciamento de containers, possibilitando a realização das tarefas.
+5. Com todas as ferramentas instaladas e o ambiente de trabalho organizado e operando, iniciou-se a realização das tarefas exigidas no desafio.
+6. Clone deste repositório no VSCode, importando todos os arquivos necessários do projeto.
+7. Inicialização dos containers do Docker, criando os parâmetros necessários no docker-compose.yml.
+8. Instalação e inicialização do Airflow, usando o ambiente virtual do Python venv.
+9. Criação dos códigos usados nas duas DAGs criadas:
+   - Um código criando funções necessárias para a DAG principal.
+   - A DAG principal que realiza todas as atribuições de ELT requeridas no desafio.
+   - Uma DAG para rodar uma query após o fim do processo.
+10. Para a implementação de composição de endereços e data dinâmicos, foi utilizado o framework Liquid no Embulk.
+
+## Execução do Projeto
+
+Os passos a seguir seguem exigências de garantias: o passo seguinte deve ser realizado somente se o anterior for bem-sucedido.
+
+Para executar o projeto, siga as etapas abaixo:
+
+1. Certifique-se de que seu ambiente de trabalho está apto para realizar as tarefas do projeto de acordo com as ferramentas utilizadas descritas acima.
+2. Clone este repositório na sua máquina local.
+3. Instale as ferramentas necessárias (Embulk, Airflow, PostgreSQL, JDK 8) conforme mencionado na seção de Etapas do Projeto. Utilize os links fornecidos para cada ferramenta.
+4. Abra os arquivos no VSCode.
+5. Implementando os containers no Docker:
+   - Verifique se dentro dos arquivos baixados encontra-se o docker-compose.yml, que contém as definições necessárias para implementação.
+   - Importante: O projeto roda utilizando as portas padrão do PostgreSQL. Neste caso, as portas 5432 e 5433 são necessárias para que o projeto seja executado fielmente. Verifique se sua máquina não está utilizando essas portas em outra implementação.
+   - Tendo garantido a liberação das portas, abra o terminal e execute o comando: `docker-compose up -d`
+6. Com o Docker funcionando, passe para a implementação do Airflow. No terminal, digite a seguinte sequência de comandos:
+   - Crie um ambiente virtual Python: `python3 -m venv venv`
+   - Agora ative o ambiente virtual: `source venv/bin/activate`
+   - Agora, você pode notar que o terminal está rodando no ambiente virtual (venv), indicado antes da linha de endereço.
+   - Instale o Airflow no ambiente virtual executando o arquivo de instalação install_airflow.sh: `bash install_airflow.sh`
+   - Carregue o arquivo setup.sh no ambiente: `source setup.sh`
+   - Inicialize o Airflow: `airflow standalone`
+   - Nota: Neste momento, este terminal ficará disponível apenas para o Airflow. Ao inicializar o Airflow, ele disponibilizará login e senha para acessar o Airflow no seu navegador.
+7. Acesse o Airflow no navegador:
+   - Digite o seguinte endereço: localhost:8080
+   - O Airflow irá pedir o login e senha que foram disponibilizados no terminal.
+   - ![dags](docs/dags.jpg)
+8. A DAG `northwind_elt_dag` que realiza todas as atribuições de ELT deve executar automaticamente.
+   - ![dags_exec](docs/dag_executada.jpg)
+9. A DAG `final_query_results_dag` que roda a query após o fim do processo precisa ser executada manualmente.
+   - ![dags_query](docs/dag_query_exec.jpg)
+10. Verifique o resultado no arquivo CSV gerado ao final da task na pasta data/results.
+
+
+# Indicium Tech Code Challenge
+
 Code challenge for Software Developer with focus in data projects.
 
 
