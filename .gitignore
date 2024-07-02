@@ -1,0 +1,13 @@
+venv
+dbdata
+dbdata_destino
+airflow/logs
+__pycache__
+airflow/airflow-webserver.pid
+airflow/airflow.cfg
+airflow/airflow.db
+airflow/standalone_admin_password.txt
+airflow/webserver_config.py
+data/csv
+data/postgres
+data/results
